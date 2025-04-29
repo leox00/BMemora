@@ -13,7 +13,7 @@
 #define MAX_TEXT_LEN  256
 #define CURSOR_WIDTH  2
 #define CURSOR_HEIGHT FONT_SIZE
-#define CURSOR_BLINK_INTERVAL 500  // Milliseconds for cursor blink
+#define CURSOR_BLINK_INTERVAL 500
 
 void save_text(const char* text) {
     const char* home = getenv("HOME");
@@ -88,7 +88,7 @@ int main(int argc, char* argv[]) {
         Uint32 current_time = SDL_GetTicks();
         if (current_time - cursor_blink_timer > CURSOR_BLINK_INTERVAL) {
             cursor_blink_timer = current_time;
-            cursor_visible = !cursor_visible;  // Toggle cursor visibility
+            cursor_visible = !cursor_visible;
         }
 
         SDL_SetRenderDrawColor(renderer, 30, 30, 30, 255);
@@ -107,9 +107,9 @@ int main(int argc, char* argv[]) {
 
         // Draw the blinking cursor
         if (cursor_visible) {
-            int cursor_x = 20 + texW;  // Position the cursor right after the text
-            int cursor_y = (WINDOW_HEIGHT - FONT_SIZE) / 2;  // Center vertically
-            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);  // White cursor
+            int cursor_x = 20 + texW;
+            int cursor_y = (WINDOW_HEIGHT - FONT_SIZE) / 2;
+            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             SDL_Rect cursorRect = {cursor_x, cursor_y, CURSOR_WIDTH, CURSOR_HEIGHT};
             SDL_RenderFillRect(renderer, &cursorRect);
         }
